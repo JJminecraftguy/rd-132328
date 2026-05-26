@@ -346,4 +346,23 @@ public class GL11 extends RealOpenGLEnums {
 	public static void glTexParameterf(int target, int param, float value) {
 		EaglercraftGPU.glTexParameterf(target, param, value);
 	}
+
+	// Compatibility path for rd-132328 style immediate mode entities
+	private static final com.mojang.rubydung.level.Tesselator rubydungTess = com.mojang.rubydung.level.Tesselator.instance;
+
+	public static void glBegin(int mode) {
+		rubydungTess.init(mode);
+	}
+
+	public static void glEnd() {
+		rubydungTess.flush();
+	}
+
+	public static void glVertex3f(float x, float y, float z) {
+		rubydungTess.vertex(x, y, z);
+	}
+
+	public static void glTexCoord2f(float u, float v) {
+		rubydungTess.tex(u, v);
+	}
 }

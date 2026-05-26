@@ -162,9 +162,7 @@ public class RubyDung implements Runnable {
 	    double dz = -Math.cos(yaw) * Math.cos(pitch);
 
 	    double reach = 3.0;
-	    double step = 0.05;
-
-	    HitResult closestHit = null;
+		    HitResult closestHit = null;
 
 	    double closestT = reach + 1;
 
@@ -286,6 +284,7 @@ public class RubyDung implements Runnable {
 		this.levelRenderer.render(this.player, 0);
 		GL11.glEnable(GL11.GL_FOG);
 		this.levelRenderer.render(this.player, 1);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		if(this.hitResult != null) {
 			this.levelRenderer.renderHit(this.hitResult);
